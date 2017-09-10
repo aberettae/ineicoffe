@@ -1,0 +1,4 @@
+.idea
+*.pyc
+*.pyi
+icoffe/db.sqlite3
