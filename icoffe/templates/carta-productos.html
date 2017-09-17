@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>Carta de productos</title>
+</head>
+<body>
+<h1>{{ titulo }}</h1>
+{% for producto in productos %}
+    <span>{{ producto.nombre }}: {{ producto.precio }}</span><br />
+{% endfor %}
+</body>
+</html>
