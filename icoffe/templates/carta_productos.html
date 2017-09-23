@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Carta</title>
+</head>
+<body>
+    <h2>{{ titulo }}</h2>
+    <ul>
+        {% for producto in productos %}
+            <li>{{ producto.nombre }}: {{ producto.precio }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
