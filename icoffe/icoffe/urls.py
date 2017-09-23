@@ -20,5 +20,6 @@ from ventas.views import demo_vista_basica, carta_productos
 urlpatterns = [
     url(r'^$', carta_productos),
     url(r'^demo/$', demo_vista_basica),
+    url(r'^ventas/', include('ventas.urls')),
     url(r'^admin/', admin.site.urls),
 ]
