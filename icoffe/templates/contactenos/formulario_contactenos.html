@@ -1,15 +1,16 @@
-<html>
-<head>
-    <title>Formulario de registro</title>
-</head>
+{% extends 'layouts/website.html' %}
+{% block titulo %} Formulario de registro {% endblock %}
+{% block contenedor %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Ingrese su sugerencia</h2>
 
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-
-        </div>
+        <form action="{% url 'contactenos:buzon' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" />
+        </form>
     </div>
 </div>
-</body>
-</html>
+<p>volver a carta <a href="{% url 'inicio' %}">Aquí</a></p>
+{% endblock %}

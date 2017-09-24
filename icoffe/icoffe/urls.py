@@ -18,9 +18,9 @@ from django.contrib import admin
 from ventas.views import demo_vista_basica, carta_productos
 
 urlpatterns = [
-    url(r'^$', carta_productos),
+    url(r'^$', carta_productos, name='inicio'),
     url(r'^demo/$', demo_vista_basica),
     url(r'^ventas/', include('ventas.urls')),
-    url(r'^contactenos/', include('contactenos.urls')),
+    url(r'^contactenos/', include('contactenos.urls', namespace='contactenos')),
     url(r'^admin/', admin.site.urls),
 ]
