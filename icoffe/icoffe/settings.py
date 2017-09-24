@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ambientes',
     'ventas',
     'recursoshumanos',
+    'contactenos',
 ]
 
 MIDDLEWARE = [
