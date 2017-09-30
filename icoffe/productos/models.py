@@ -28,7 +28,7 @@ class Producto(models.Model):
     stock = models.IntegerField(default=0)
     categoria = models.ForeignKey(Categoria, help_text="Categoria del producto")
     insumo = models.ManyToManyField(Insumo, blank=True)
-    #1imagen = models.ImageField(blank=True, null=True, default=None)
+    imagen = models.ImageField(blank=True, null=True, default=None)
     fecha_creado = models.DateTimeField(auto_now_add=True)
     fecha_modificado = models.DateTimeField(auto_now=True)
 

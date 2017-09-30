@@ -1,1 +1,31 @@
 {% extends 'layouts/sistema.html' %}
+{% load thumbnail %}
+{% block contenedor %}
+<div class="row">
+  <div class="col col-md-4">
+      Lista de detalle de pedido
+  </div>
+  <div class="col col-md-8">
+  <div class="row">
+          <div class="col-md-12">
+              {% for categoria in categorias %}
+                <span>{{ categoria.nombre }}</span>
+              {% endfor %}
+
+          </div>
+      </div>
+    <div class="row">
+
+      {% for producto in productos %}
+        <div class="col col-md-2">
+          {% thumbnail producto.imagen "100x100" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            {% endthumbnail %}
+            <br />
+            <h5>{{ producto.nombre|title }}</h5>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

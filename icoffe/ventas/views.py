@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView
 from .models import Pedido, DetallePedido
-from productos.models import Producto
+from productos.models import Producto, Categoria
 from .forms import PedidoForm
 
 def demo_vista_basica(request):
@@ -56,6 +56,15 @@ class CrearOrdenView(FormView):
     form_class = PedidoForm
     template_name = 'ventas/crear_orden.html'
     success_url = reverse_lazy('ventas:lista-pedidos')
+    
+    def get_context_data(self, **kwargs):
+        context = super(CrearOrdenView, self).get_context_data(**kwargs)
+        context.update({
+            "categorias": Categoria.objects.all(),
+            "productos": Producto.objects.filter(stock__gt=0).order_by('-precio', 'nombre')
+        })
+
+        return context
 
 
 class ListaPedidoView(ListView):
