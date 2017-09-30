@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView
-
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, FormView
+from .models import Pedido, DetallePedido
 from productos.models import Producto
+from .forms import PedidoForm
 
 def demo_vista_basica(request):
     return HttpResponse('Hola mundo, esta es una vista basica')
@@ -48,3 +50,14 @@ class ProductoLista(ListView):
         })
 
         return context
+
+
+class CrearOrdenView(FormView):
+    form_class = PedidoForm
+    template_name = 'ventas/crear_orden.html'
+    success_url = reverse_lazy('ventas:lista-pedidos')
+
+
+class ListaPedidoView(ListView):
+    template_name = 'ventas/lista_pedidos.html'
+    model = Pedido
