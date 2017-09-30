@@ -2,3 +2,4 @@
 *.pyc
 *.pyi
 icoffe/db.sqlite3
+icoffe/static/assets/
