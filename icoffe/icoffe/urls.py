@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^demo/$', demo_vista_basica),
     url(r'^ventas/', include('apps.ventas.urls', namespace='ventas')),
     url(r'^contactenos/', include('apps.contactenos.urls', namespace='contactenos')),
+    url(r'^reserva/', include('apps.reservas.urls', namespace='reserva')),
     url(r'^admin/', admin.site.urls),
 ]
 

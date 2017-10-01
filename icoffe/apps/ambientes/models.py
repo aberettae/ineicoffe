@@ -25,5 +25,9 @@ class Mesa(models.Model):
     referencia = models.CharField(max_length=100, blank=True, null=True, default=None,
                                   help_text='referncia a la mesa')
     ambientes = models.ForeignKey(Ambiente)
+    nro_asientos = models.PositiveIntegerField(default=4)
     fecha_creado = models.DateTimeField(auto_now_add=True)
     fecha_modificado = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.codigo)
