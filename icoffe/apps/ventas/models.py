@@ -1,7 +1,7 @@
 from django.db import models
-from ambientes.models import Mesa
-from productos.models import Producto
-from recursoshumanos.models import Personal
+from apps.ambientes.models import Mesa
+from apps.productos.models import Producto
+from apps.recursoshumanos.models import Personal
 
 
 # Create your models here.

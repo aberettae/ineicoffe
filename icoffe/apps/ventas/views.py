@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView
 from .models import Pedido, DetallePedido
-from productos.models import Producto, Categoria
+from apps.productos.models import Producto, Categoria
 from .forms import PedidoForm
 
 def demo_vista_basica(request):

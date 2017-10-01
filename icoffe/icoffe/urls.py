@@ -17,13 +17,13 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from ventas.views import demo_vista_basica, carta_productos
+from apps.ventas.views import demo_vista_basica, carta_productos
 
 urlpatterns = [
     url(r'^$', carta_productos, name='inicio'),
     url(r'^demo/$', demo_vista_basica),
-    url(r'^ventas/', include('ventas.urls', namespace='ventas')),
-    url(r'^contactenos/', include('contactenos.urls', namespace='contactenos')),
+    url(r'^ventas/', include('apps.ventas.urls', namespace='ventas')),
+    url(r'^contactenos/', include('apps.contactenos.urls', namespace='contactenos')),
     url(r'^admin/', admin.site.urls),
 ]
 
