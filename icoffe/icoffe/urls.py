@@ -29,4 +29,7 @@ urlpatterns = [
 ]
 
 if settings.DEBUG is True:
+    urlpatterns += [
+        url(r'^demo/', include('apps.ejemplos.urls', namespace='ejemplos')),
+    ]
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
