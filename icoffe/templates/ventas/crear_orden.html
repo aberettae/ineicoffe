@@ -1,15 +1,22 @@
 {% extends 'layouts/sistema.html' %}
+{% load staticfiles %}
 {% load thumbnail %}
 {% block contenedor %}
 <div class="row">
   <div class="col col-md-4">
       Lista de detalle de pedido
+      <div class="row">
+          <div class="col-md-12">
+
+          </div>
+      </div>
   </div>
   <div class="col col-md-8">
   <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 contenedor-categoria">
+                <a href="#">Todos</a>
               {% for categoria in categorias %}
-                <span>{{ categoria.nombre }}</span>
+                <a href="#" data-id="{{ categoria.id }}">{{ categoria.nombre }}</a>
               {% endfor %}
 
           </div>
@@ -17,15 +24,21 @@
     <div class="row">
 
       {% for producto in productos %}
-        <div class="col col-md-2">
+        <div class="col col-md-2 contenedor-producto" data-categoria="{{ producto.categoria.id }}"
+             data-precio="{{ producto.precio }}">
+          <a href="#">
           {% thumbnail producto.imagen "100x100" crop="center" as im %}
                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
             {% endthumbnail %}
             <br />
             <h5>{{ producto.nombre|title }}</h5>
+          </a>
         </div>
       {% endfor %}
     </div>
   </div>
 </div>
+{% endblock %}
+{% block jscustom %}
+<script type="text/javascript" src="{% static 'custom/' %}js/ejemplos.js"></script>
 {% endblock %}
