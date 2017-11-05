@@ -1,5 +1,12 @@
-from rest_framework.generics import ListAPIView, CreateAPIView
-from .serializers import ProductoSerializer
+from core.apimixins import CreaMultiMixin
+from rest_framework.generics import (
+    ListAPIView,
+    CreateAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    DestroyAPIView
+)
+from .serializers import ProductoSerializer, CategoriaSerializer
 from ..models import Producto, Categoria
 
 
@@ -35,4 +42,11 @@ class ProductosApiView(CreateAPIView, ListAPIView):
         producto.save()
 
 
+class CategoriaListApiView(CreaMultiMixin, CreateAPIView, ListAPIView):
+    serializer_class = CategoriaSerializer
+    queryset = Categoria.objects.all()
 
+
+class CategoriaAPiView(DestroyAPIView, UpdateAPIView, RetrieveAPIView):
+    serializer_class = CategoriaSerializer
+    queryset = Categoria.objects.all()
