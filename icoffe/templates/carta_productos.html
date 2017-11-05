@@ -7,5 +7,33 @@
             <li>{{ producto.nombre }}: {{ producto.precio }}</li>
         {% endfor %}
     </ul>
+
+    <h2>{{ titulo }} con AJAX</h2>
+    <ul class="lista_productos"></ul>
     <p>Cuentanos tu experiencia: <a href="{% url 'contactenos:buzon' %}">Aquí</a></p>
+{% endblock %}
+{% block jscustom %}
+<script type="text/javascript">
+    var url_service = 'http://127.0.0.1:8000/api/v1/';
+    var get_url_service = function (slug, params) {
+        return url_service + slug + '/';
+    };
+
+    $(document).ready(function (e) {
+        $.ajax({
+            url: get_url_service('productos'),
+            type: 'GET',
+            dataType: 'JSON',
+            beforeSend: function (obj) {},
+            success: function (res) {
+                $.each(res, function (i,v) {
+                    $(".lista_productos").append('<li>'+v.nombre+': '+v.precio+'</li>');
+                });
+            },
+            error: function (err, obj, objerr) {
+                console.log("error", err);
+            }
+        })
+    })
+</script>
 {% endblock %}
