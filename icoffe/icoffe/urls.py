@@ -20,6 +20,7 @@ from django.contrib import admin
 from apps.ventas.views import demo_vista_basica, carta_productos
 
 urlpatterns = [
+    url(r'^api/v1/productos/', include('apps.productos.api.urls', namespace='api_producto')),
     url(r'^$', carta_productos, name='inicio'),
     url(r'^demo/$', demo_vista_basica),
     url(r'^ventas/', include('apps.ventas.urls', namespace='ventas')),
